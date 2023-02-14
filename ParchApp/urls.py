@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ParchApp2 import views as ParchaViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', ParchaViews.main),
 ]
