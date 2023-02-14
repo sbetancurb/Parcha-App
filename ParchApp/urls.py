@@ -20,4 +20,6 @@ from ParchApp2 import views as ParchaViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ParchaViews.main),
+    path('recomendaciones/', ParchaViews.recomendaciones),
+    path('foro/', ParchaViews.foro),
 ]

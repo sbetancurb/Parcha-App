@@ -5,3 +5,9 @@ from django.http import HttpResponse
 
 def main(request):
     return render(request, 'main.html')
+
+def recomendaciones(request):
+    return render(request, 'recomendaciones.html')
+
+def foro(request):
+    return render(request, 'ForoComunidad.html')
