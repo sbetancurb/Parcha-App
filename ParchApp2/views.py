@@ -20,7 +20,3 @@ def login(request):
 def salida(request):
     logout(request)
     return redirect('/')
-
-
-
-
