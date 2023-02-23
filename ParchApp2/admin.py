@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import usuario
+from .models import usuario, lugares
 
 # Register your models here.
 
@@ -9,3 +9,4 @@ class AdminRegistrado(admin.ModelAdmin):
         model =  usuario
 
 admin.site.register(usuario, AdminRegistrado)
+admin.site.register(lugares)

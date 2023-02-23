@@ -22,7 +22,6 @@ urlpatterns = [
     path('', ParchaViews.home),
     path('recomendaciones/', ParchaViews.recomendaciones),
     path('foro/', ParchaViews.foro),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('login/', ParchaViews.login),
     path('salir/',ParchaViews.salida),
 ]

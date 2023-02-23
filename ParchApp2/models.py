@@ -9,6 +9,12 @@ class lugares(models.Model):
     LvlEconomico = models.CharField(max_length = 50, blank = False, null = False)
     descripcion = models.CharField(max_length = 140, blank = False, null = False)
     ubicacion = models.CharField(max_length = 50, blank = False, null = False)
+    
+    def __unicode__(self):
+        return self.nombre
+    
+    def __str__(self):
+        return self.nombre
 
 class usuario(models.Model):
     nombre = models.CharField(max_length = 100, blank = True, null = True)
