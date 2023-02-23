@@ -5,8 +5,8 @@ from django.contrib.auth import logout
 
 #Views of the project
 @login_required
-def base(request):
-    return render(request, 'base.html')
+def home(request):
+    return render(request, 'Home.html')
 
 def recomendaciones(request):
     return render(request, 'recomendaciones.html')

@@ -19,7 +19,7 @@ from ParchApp2 import views as ParchaViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ParchaViews.base),
+    path('', ParchaViews.home),
     path('recomendaciones/', ParchaViews.recomendaciones),
     path('foro/', ParchaViews.foro),
     path('accounts/', include('django.contrib.auth.urls')),
