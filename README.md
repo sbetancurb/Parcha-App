@@ -2,8 +2,8 @@
 
 Libraries to install
 
-pip install mysqlclient
-pip install django
+- pip install mysqlclient
+- pip install django
 
 How to run the program
 
