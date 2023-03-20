@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from ParchApp2 import views as ParchaViews
 
+app_name = 'ParchApp2'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ParchaViews.home),
-    path('recomendaciones/', ParchaViews.recomendaciones),
+    path('recomendaciones/', ParchaViews.recomendaciones,name='recomendaciones'),
     path('foro/', ParchaViews.foro),
     path('login/', ParchaViews.login),
     path('salir/',ParchaViews.salida),

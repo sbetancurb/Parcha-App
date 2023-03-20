@@ -2,14 +2,28 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.db.models import Q
+from ParchApp2.forms import *
 
 #Views of the project
-@login_required
 def home(request):
     return render(request, 'Home.html')
 
 def recomendaciones(request):
-    return render(request, 'recomendaciones.html')
+    edad = request.GET.get('Age')
+    zona = request.GET.get('Zone')
+    categoria = request.GET.get('Category')
+    economia = request.GET.get('Economy')
+    lugar = lugares.objects.all()
+
+    lugar = lugares.objects.filter(
+        Q(edad__icontains = edad) |
+        Q(Zona__icontains = zona) |
+        Q(LvlEconomico__icontains = economia) |
+        Q(categoria__icontains = categoria)
+    ).distinct()
+
+    return render(request,"recomendaciones.html",{'lugares':lugar})
 
 def foro(request):
     return render(request, 'ForoComunidad.html')
