@@ -7,17 +7,15 @@ Zone = [('Envigado','Envigado'),('Poblado','Poblado')]
 Category = [('Discoteca','Discoteca'),('Restaurante','Restaurante'),('Mirador','Mirador')]
 Age = [('menor de edad','menor de edad'),('mayor de edad','mayor de edad')]
 
-class lugares(models.Model):
-    nombre = models.CharField(max_length = 50, blank = False, null = False)
+class lugar(models.Model):
+    nombre = models.CharField(max_length = 50, blank = True, null = True)
     #foto = models.ImageField()
-    LvlEconomico = models.CharField(max_length=50, blank = False, null = False, choices=Economy)
-    descripcion = models.CharField(max_length = 140, blank = False, null = False)
-    Zona = models.CharField(max_length = 50, blank = False, null = False, choices= Zone)
-    categoria = models.CharField(max_length= 50, blank=True, null=False, choices= Category)
-    edad = models.CharField(max_length=50, blank=True, null = False, default = '', choices= Age)
-    
-    def __unicode__(self):
-        return self.categoria
+    LvlEconomico = models.CharField(max_length=50, blank = True, null = True, choices=Economy)
+    descripcion = models.CharField(max_length = 140, blank = True, null = True)
+    Zona = models.CharField(max_length = 50, blank = True, null = True, choices= Zone)
+    categoria = models.CharField(max_length= 50, blank = True, null = True, choices= Category)
+    edad = models.CharField(max_length=50, blank = True, null = True, choices= Age)
     
     def __str__(self):
+        
         return self.categoria

@@ -14,16 +14,17 @@ def recomendaciones(request):
     zona = request.GET.get('Zone')
     categoria = request.GET.get('Category')
     economia = request.GET.get('Economy')
-    lugar = lugares.objects.all()
+    lugares = lugar.objects.all()
 
-    lugar = lugares.objects.filter(
+    if (edad and zona and categoria and economia):
+        lugares = lugar.objects.filter(
         Q(edad__icontains = edad) |
         Q(Zona__icontains = zona) |
         Q(LvlEconomico__icontains = economia) |
         Q(categoria__icontains = categoria)
     ).distinct()
 
-    return render(request,"recomendaciones.html",{'lugares':lugar})
+    return render(request,"recomendaciones.html",{'lugares':lugares})
 
 def foro(request):
     return render(request, 'ForoComunidad.html')

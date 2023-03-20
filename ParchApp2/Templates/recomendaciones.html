@@ -6,11 +6,16 @@
 <body>
     <div style="text-align: center; margin-top: 50px;" >
         <form action="" method="get">
+            <!--<div class="input-group">
+                <input type="text" class="form-control" placeholder="Edad" name="Age">
+                <input type="text" class="form-control" placeholder="Edad" name="Economy">
+                <input type="text" class="form-control" placeholder="Edad" name="Zone">
+                <input type="text" class="form-control" placeholder="Edad" name="Category">
+            </div>-->
             <div class="form-group" style="text-align: center;">
                 <div class="row">
                     <div class="col-md-6">
                         <label>Edad</label>
-              
                         <select name="Age"  class="form-control", id="Age">
                             <option value="menor">menor de edad</option>
                             <option value="mayor" selected>mayor de edad</option>
@@ -47,15 +52,37 @@
             <input type="submit" class="btn btn-primary">
         </form>
     </div>
-    <script>
-        function mostrar(id) {
-                var x = document.getElementById(id);
-                if (x.className.indexOf("w3-show") == -1) {
-                    x.className += " w3-show";
-                } else {
-                    x.className = x.className.replace(" w3-show", "");
-                }
-            }
-    </script>
+    {% if lugares%}
+        {% if lugares.edad == Age %}
+          <div class="table-responsive">
+            <table class="table table-bordered"  width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>LvlEconomico</th>
+                  <th>descripcion</th>
+                  <th>Zona</th>
+                  <th>categoria</th>
+                  <th>edad</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for place in lugares %}
+                  <tr>
+                    <td>{{ place.nombre }}</td>
+                    <td>{{ place.LvlEconomico }}</td>
+                    <td>{{ place.descripcion }}</td>
+                    <td>{{ place.Zona }}</td>
+                    <td>{{ place.categoria }}</td>
+                    <td>{{ place.edad }}</td> 
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% endif %}
+    {% else %}
+        <h1>NO HAY LUGARES CON ESAS ESPECIFICACIONES</h1>
+    {% endif %}
 </body>
 </html>
