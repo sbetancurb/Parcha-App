@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset = "UTF-8">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #a31621;">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="/"><strong>Home</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/recomendaciones" style="color: white;"><strong>Recomendaciones</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/foro" ><strong>Foro</strong></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <div style="text-align: center; margin-top: 50px;" >
+        <form action="" method="get">
+            <!--<div class="input-group">
+                <input type="text" class="form-control" placeholder="Edad" name="Age">
+                <input type="text" class="form-control" placeholder="Edad" name="Economy">
+                <input type="text" class="form-control" placeholder="Edad" name="Zone">
+                <input type="text" class="form-control" placeholder="Edad" name="Category">
+            </div>-->
+            <div class="form-group" style="text-align: center;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Edad</label>
+                        <select name="Age"  class="form-control", id="Age">
+                            <option value="menor">menor de edad</option>
+                            <option value="mayor" selected>mayor de edad</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Cuanto tiene</label>
+              
+                        <select name="Economy"  class="form-control" id="Economy">
+                            <option value="menor50">menor de 50k</option>
+                            <option value="entre50y150" selected>entre 50k y 150k</option>
+                            <option value="mayor150" selected>mayor de 150k</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Pa donde va</label>
+              
+                        <select name="Zone"  class="form-control" id="Zone">
+                            <option value="Envigado">Envigado</option>
+                            <option value="Poblado" selected>Poblado</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Que quiere hacer</label>
+              
+                        <select name="Category"  class="form-control" id="Category">
+                            <option value="Discoteca">Discoteca</option>
+                            <option value="Restaurante" selected>Restaurante</option>
+                            <option value="Mirador" selected>Mirador</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    {% if lugares%}
+        {% if lugares.edad == Age %}
+          <div class="table-responsive">
+            <table class="table table-bordered"  width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>LvlEconomico</th>
+                  <th>descripcion</th>
+                  <th>Zona</th>
+                  <th>categoria</th>
+                  <th>edad</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for place in lugares %}
+                  <tr>
+                    <td>{{ place.nombre }}</td>
+                    <td>{{ place.LvlEconomico }}</td>
+                    <td>{{ place.descripcion }}</td>
+                    <td>{{ place.Zona }}</td>
+                    <td>{{ place.categoria }}</td>
+                    <td>{{ place.edad }}</td> 
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% endif %}
+    {% else %}
+        <h1>NO HAY LUGARES CON ESAS ESPECIFICACIONES</h1>
+    {% endif %}
+</body>
+</html>
