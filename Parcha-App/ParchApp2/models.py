@@ -8,13 +8,13 @@ Category = [('Discoteca','Discoteca'),('Restaurante','Restaurante'),('Mirador','
 Age = [('menor de edad','menor de edad'),('mayor de edad','mayor de edad')]
 
 class lugar(models.Model):
-    nombre = models.CharField(max_length = 50, blank = True, null = True)
-    #foto = models.ImageField()
-    LvlEconomico = models.CharField(max_length=50, blank = True, null = True, choices=Economy)
-    descripcion = models.CharField(max_length = 140, blank = True, null = True)
-    Zona = models.CharField(max_length = 50, blank = True, null = True, choices= Zone)
-    categoria = models.CharField(max_length= 50, blank = True, null = True, choices= Category)
-    edad = models.CharField(max_length=50, blank = True, null = True, choices= Age)
+    nombre = models.CharField(max_length = 50,default='x')
+    foto = models.ImageField(upload_to='Parcha-App/images/',default='')
+    LvlEconomico = models.CharField(max_length=50, choices=Economy,default='')
+    descripcion = models.CharField(max_length = 140,default='')
+    Zona = models.CharField(max_length = 50, choices= Zone,default='')
+    categoria = models.CharField(max_length= 50, choices= Category,default='')
+    edad = models.CharField(max_length=50, choices= Age,default='')
     
     def __str__(self):
         

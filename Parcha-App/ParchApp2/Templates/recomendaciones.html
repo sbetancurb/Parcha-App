@@ -8,26 +8,8 @@
     <meta charset = "UTF-8">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #a31621;">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="/"><strong>Home</strong></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/recomendaciones" style="color: white;"><strong>Recomendaciones</strong></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/foro" ><strong>Foro</strong></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+  {% extends 'base.html' %}
+  {% block content %}
     <div style="text-align: center; margin-top: 50px;" >
         <form action="" method="get">
             <!--<div class="input-group">
@@ -78,35 +60,27 @@
     </div>
     {% if lugares%}
         {% if lugares.edad == Age %}
-          <div class="table-responsive">
-            <table class="table table-bordered"  width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>LvlEconomico</th>
-                  <th>descripcion</th>
-                  <th>Zona</th>
-                  <th>categoria</th>
-                  <th>edad</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for place in lugares %}
-                  <tr>
-                    <td>{{ place.nombre }}</td>
-                    <td>{{ place.LvlEconomico }}</td>
-                    <td>{{ place.descripcion }}</td>
-                    <td>{{ place.Zona }}</td>
-                    <td>{{ place.categoria }}</td>
-                    <td>{{ place.edad }}</td> 
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for lugar in lugares %}
+            <div v-for='lugar in lugares' class="col">
+                <div class="card">
+                    <img  class="card-img-top" src="{{lugar.foto.url}}">
+                    <div class="card-body">
+                            <h5 class="card-title fw-bold">{{lugar.nombre}}</h5>
+                        </a>
+                        <p class="card-text">{{lugar.descripcion}}</p>
+                        <p class="card-text">{{lugar.LvlEconomico}}</p>
+                        <p class="card-text">{{lugar.Zona}}</p>
+                        <p class="card-text">{{lugar.Edad}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
           </div>
         {% endif %}
     {% else %}
         <h1>NO HAY LUGARES CON ESAS ESPECIFICACIONES</h1>
     {% endif %}
+  {% endblock content %}
 </body>
 </html>

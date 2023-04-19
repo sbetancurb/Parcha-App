@@ -21,9 +21,8 @@ app_name = 'ParchApp2'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ParchaViews.home),
-    path('recomendaciones/', ParchaViews.recomendaciones,name='recomendaciones'),
-    path('foro/', ParchaViews.foro),
-    path('login/', ParchaViews.login),
-    path('salir/',ParchaViews.salida),
+    path('', ParchaViews.home,name='Home'),
+    path('recomendaciones/', ParchaViews.recomendaciones,name='Recomendacion'),
+    path('foro/', ParchaViews.foro, name='Foro'),
+    path('accounts/',include('accounts.urls')),
 ]
