@@ -19,7 +19,7 @@ def signupaccount(request):
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect('Home')
+                return redirect('Recomendacion')
             except IntegrityError:
                 return render(request, 'signupaccount.html',
                 {'form':UserCreateForm,
@@ -31,7 +31,7 @@ def signupaccount(request):
 @login_required       
 def logoutaccount(request):
     logout(request)
-    return redirect('Home')
+    return redirect('Recomendacion')
 
 def loginaccount(request):
     if request.method == 'GET':
@@ -42,4 +42,4 @@ def loginaccount(request):
         return render(request,'loginaccount.html',{'form': AuthenticationForm(),'error': 'username and password do not match'})
     else:
         login(request,user)
-    return redirect('Home')
+    return redirect('Recomendacion')

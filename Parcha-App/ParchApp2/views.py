@@ -26,12 +26,6 @@ def recomendaciones(request):
 
     return render(request,"recomendaciones.html",{'lugares':lugares})
 
+@login_required
 def foro(request):
     return render(request, 'ForoComunidad.html')
-
-def login(request):
-    return render(request, 'registration/login.html')
-
-def salida(request):
-    logout(request)
-    return redirect('/')
