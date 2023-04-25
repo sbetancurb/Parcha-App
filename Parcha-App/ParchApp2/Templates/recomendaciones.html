@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset = "UTF-8">
+</head>
+<body>
+  {% extends 'base.html' %}
+  {% block content %}
+    <div style="text-align: center; margin-top: 50px;" >
+        <form action="" method="get">
+            <div class="form-group" style="text-align: center;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <select name="Age" class="form-select" aria-label="Default select example" id="Age">
+                            <option selected>Default</option>
+                            <option value="menor">Menor de edad</option>
+                            <option value="mayor">Mayor de edad</option>
+                          </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select name="Economy"  class="form-select" aria-label="Default select example" id="Economy">
+                            <option selected>Default</option>
+                            <option value="menor que 50k">menor que 50k</option>
+                            <option value="entre 50k y 150k">entre 50k y 150k</option>
+                            <option value="mas de 150k">mas de 150k</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select name="Zone"  class="form-select" aria-label="Default select example" id="Zone">
+                            <option selected>Default</option>
+                            <option value="Envigado">Envigado</option>
+                            <option value="Poblado">Poblado</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-select" aria-label="Default select example" name="Category" id="Category">
+                            <option selected>Default</option>
+                            <option value="Discoteca">Discoteca</option>
+                            <option value="Restaurante">Restaurante</option>
+                            <option value="Mirador">Mirador</option>
+                            <option value="Centro Comercial">Centro Comercial</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    <br>
+    {% if lugares%}
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for lugar in lugares %}
+            <div v-for='lugar in lugares' class="col">
+                <div class="card">
+                    <img  class="card-img-top" src="{{lugar.foto.url}}">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{lugar.nombre}}</h5>
+                        
+                        <button type="button" class="mt-5 mx-5 btn btn-primary" data-bs-toggle="modal" data-bs-target="#miModal">Mas Info</button>
+                        <div class="modal fade" id="miModal" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <b>Breve Descripcion:</b>
+                                        <p class="card-text">{{lugar.descripcion}}</p>
+                                        <b>Economia:</b>
+                                        <p class="card-text">{{lugar.LvlEconomico}}</p>
+                                        <b>Ubicacion</b>
+                                        <p class="card-text">{{lugar.Zona}}</p>
+                                        <b>Disponible para</b>
+                                        <p class="card-text">{{lugar.edad}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+          </div>
+    {% else %}
+        <h1>NO HAY LUGARES CON ESAS ESPECIFICACIONES</h1>
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  {% endblock content %}
+</body>
+</html>
