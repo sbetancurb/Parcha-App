@@ -15,6 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'ParchApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\beta0\OneDrive\Escritorio\Parcha-App\Parcha-App\ParchApp2\Templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'ParchApp2/Templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
