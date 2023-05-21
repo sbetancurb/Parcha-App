@@ -59,7 +59,7 @@ ROOT_URLCONF = 'ParchApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'moviereviews/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
