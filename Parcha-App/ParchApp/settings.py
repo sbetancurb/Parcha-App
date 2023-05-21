@@ -59,7 +59,7 @@ ROOT_URLCONF = 'ParchApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'ParchApp/ParchApp2/templates')],
+        'DIRS': [r'C:\Users\beta0\OneDrive\Escritorio\Parcha-App\Parcha-App\ParchApp2\Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
