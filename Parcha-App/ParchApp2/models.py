@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
+from django import forms
 
 # Create your models here.
 Economy = [('menor que 50k','menor que 50k'), ('entre 50k y 150k','entre 50k y 150k'), ('mas de 150k','mas de 150k')]
@@ -21,3 +22,13 @@ class lugar(models.Model):
     def __str__(self):
         
         return self.nombre
+    
+class cuestionario(models.Model):
+    Edad = models.CharField(max_length=50)
+    Zona = models.CharField(max_length = 50)
+    Tipo = models.CharField(max_length= 50)
+    Eco = models.CharField(max_length=50)
+
+    def __str__(self):
+        
+        return self.Tipo

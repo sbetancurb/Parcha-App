@@ -11,7 +11,8 @@
   {% extends 'base.html' %}
   {% block content %}
     <div style="text-align: center; margin-top: 50px;" >
-        <form action="" method="get">
+        <form method='post'>
+            {% csrf_token %}
             <div class="form-group" style="text-align: center;">
                 <div class="row">
                     <div class="col-md-6">
@@ -61,8 +62,8 @@
                     <div class="card-body">
                         <h5 class="card-title fw-bold">{{lugar.nombre}}</h5>
                         
-                        <button type="button" class="mt-5 mx-5 btn btn-primary" data-bs-toggle="modal" data-bs-target="#miModal">Mas Info</button>
-                        <div class="modal fade" id="miModal" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                        <button type="button" class="mt-5 mx-5 btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal{{lugar.id}}{{loop.index}}">Mas Info</button>
+                        <div class="modal fade" id="infoModal{{lugar.id}}{{loop.index}}" tabindex="-1" aria-hidden="true" aria-labelledby="infoModalLabel{{lugar.id}}{{loop.index}}">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -81,8 +82,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="mt-5 mx-5 btn btn-primary" data-bs-toggle="modal" data-bs-target="#miModal2">Ubicacion</button>
-                        <div class="modal fade" id="miModal2" tabindex="-1" aria-hidden="true" aria-labelledby="modalTitle">
+                        <button type="button" class="mt-5 mx-5 btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubiModal{{lugar.id}}{{loop.index}}">Ubicacion</button>
+                        <div class="modal fade" id="ubiModal{{lugar.id}}{{loop.index}}" tabindex="-1" aria-hidden="true" aria-labelledby="ubiModalLabel{{lugar.id}}{{loop.index}}">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

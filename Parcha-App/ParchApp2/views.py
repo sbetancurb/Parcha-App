@@ -11,10 +11,13 @@ def home(request):
 
 @login_required
 def recomendaciones(request):
-    edad = request.GET.get('Age')
-    zona = request.GET.get('Zone')
-    categoria = request.GET.get('Category')
-    economia = request.GET.get('Economy')
+    
+    form = ProductoForm()
+
+    edad = request.POST.get('Age')
+    zona = request.POST.get('Zone')
+    categoria = request.POST.get('Category')
+    economia = request.POST.get('Economy')
     lugares = lugar.objects.all()
 
     if (edad and zona and categoria and economia):
@@ -24,5 +27,25 @@ def recomendaciones(request):
         Q(LvlEconomico__icontains = economia) |
         Q(categoria__icontains = categoria)
     ).distinct()
+        
+    
+    if request.method == 'POST':
+        print(request.POST)
+        form = ProductoForm(request.POST)
+
+        if form.is_valid():
+            print('invalido')
+
+        else:
+            print('valido')
+            
+            product = cuestionario()
+
+            product.Edad = request.POST.get('Age')
+            product.Tipo = request.POST.get('Category')
+            product.Zona = request.POST.get('Zone')
+            product.Eco = request.POST.get('Economy')
+
+            product.save()
 
     return render(request,"recomendaciones.html",{'lugares':lugares})
