@@ -4,10 +4,28 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.db.models import Q
 from ParchApp2.forms import *
+import matplotlib.pyplot as plt
+import os
 
 #Views of the project
 def home(request):
-    return render(request, 'Home.html')
+    all_objects = cuestionario.objects.all()
+    dict = {
+        'Envigado' : 0,
+        'Poblado' : 0
+    }
+    for obj in all_objects:
+        dict[obj.Zona] = dict[obj.Zona] = 1
+    keys = dict.keys()
+    values = dict.values()
+    plt.pie(values, labels=keys, autopct='%1.1f%%')
+    plt.title('Cuestionarios')
+    plt.axis('equal')
+    plot_path = os.path.join('media','Parcha-App','static', 'plot.png')
+    plt.savefig(plot_path)
+
+    plt.close()
+    return render(request, 'Home.html', {'data' : dict})
 
 @login_required
 def recomendaciones(request):
