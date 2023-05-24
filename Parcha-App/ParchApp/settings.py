@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'ParchApp' , 'static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 MIDDLEWARE = [
