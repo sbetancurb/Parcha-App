@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -9,15 +10,15 @@
     <meta charset = "UTF-8">
 </head>
 <body>
-  {% extends 'base.html' %}
   {% block content %}
     <center>
         <div class="content" style="background-color: gray; margin-top: 50px; margin-left: 150px; margin-right: 150px; height: 200px;">
             <h1>Parchapp</h1>
         </div>
+        <img src="{% static 'plot.png' %}" alt="Plot">
+        <img src="{% static 'plot2.png' %}" alt="Plot">
+        <img src="{% static 'plot3.png' %}" alt="Plot">
     </center>
-    <img src="{% static 'plot.png' %}" alt="Plot">
-    
   {% endblock content %}
 </body> 
 </html>

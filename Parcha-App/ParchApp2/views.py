@@ -12,19 +12,52 @@ def home(request):
     all_objects = cuestionario.objects.all()
     dict = {
         'Envigado' : 0,
-        'Poblado' : 0
+        'Poblado' : 0,
+        'Default' : 0
     }
     for obj in all_objects:
-        dict[obj.Zona] = dict[obj.Zona] = 1
+        dict[obj.Zona] = dict[obj.Zona] + 1
     keys = dict.keys()
     values = dict.values()
     plt.pie(values, labels=keys, autopct='%1.1f%%')
     plt.title('Cuestionarios')
     plt.axis('equal')
-    plot_path = os.path.join('media','Parcha-App','static', 'plot.png')
+    plot_path = os.path.join('static', 'plot.png')
     plt.savefig(plot_path)
-
     plt.close()
+
+    dict2 = {
+        'Discoteca' : 0,
+        'Restaurante' : 0,
+        'Centro Comercial' : 0,
+        'Mirador' : 0
+    }
+    for obj in all_objects:
+        dict2[obj.Tipo] = dict2[obj.Tipo] + 1
+    fig, ax = plt.subplots()
+    ax.bar(dict2.keys(), dict2.values())
+    plot_path = os.path.join('static', 'plot2.png')
+    plt.savefig(plot_path)
+    plt.close()
+
+    dict3 = {
+        'menor que 50k' : 0,
+        'entre 50k y 150k' : 0,
+        'mas de 150k' : 0,
+        'Default' : 0
+    }
+    for obj in all_objects:
+        dict3[obj.Eco] = dict3[obj.Eco] + 1
+    fig, ax = plt.subplots()
+    ax.bar(dict3.keys(), dict3.values())
+    plot_path = os.path.join('static', 'plot3.png')
+    plt.savefig(plot_path)
+    plt.close()
+
+    print(dict)
+    print(dict2)
+    print(dict3)
+
     return render(request, 'Home.html', {'data' : dict})
 
 @login_required
