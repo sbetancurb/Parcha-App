@@ -20,7 +20,7 @@ def home(request):
     keys = dict.keys()
     values = dict.values()
     plt.pie(values, labels=keys, autopct='%1.1f%%')
-    plt.title('Cuestionarios')
+    plt.title('Zona mas concurrida')
     plt.axis('equal')
     plot_path = os.path.join('static', 'plot.png')
     plt.savefig(plot_path)
