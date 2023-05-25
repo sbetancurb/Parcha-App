@@ -20,7 +20,7 @@ def home(request):
     keys = dict.keys()
     values = dict.values()
     plt.pie(values, labels=keys, autopct='%1.1f%%')
-    plt.title('Zona mas concurrida')
+    plt.title('Zona mas popular')
     plt.axis('equal')
     plot_path = os.path.join('static', 'plot.png')
     plt.savefig(plot_path)
@@ -37,27 +37,10 @@ def home(request):
         dict2[obj.Tipo] = dict2[obj.Tipo] + 1
     fig, ax = plt.subplots()
     ax.bar(dict2.keys(), dict2.values())
+    plt.title('Parche mas buscado')
     plot_path = os.path.join('static', 'plot2.png')
     plt.savefig(plot_path)
     plt.close()
-
-    dict3 = {
-        'menor que 50k' : 0,
-        'entre 50k y 150k' : 0,
-        'mas de 150k' : 0,
-        'Default' : 0
-    }
-    for obj in all_objects:
-        dict3[obj.Eco] = dict3[obj.Eco] + 1
-    fig, ax = plt.subplots()
-    ax.bar(dict3.keys(), dict3.values())
-    plot_path = os.path.join('static', 'plot3.png')
-    plt.savefig(plot_path)
-    plt.close()
-
-    print(dict)
-    print(dict2)
-    print(dict3)
 
     return render(request, 'Home.html', {'data' : dict})
 
