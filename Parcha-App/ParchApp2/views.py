@@ -30,7 +30,8 @@ def home(request):
         'Discoteca' : 0,
         'Restaurante' : 0,
         'Centro Comercial' : 0,
-        'Mirador' : 0
+        'Mirador' : 0,
+        'Default' : 0
     }
     for obj in all_objects:
         dict2[obj.Tipo] = dict2[obj.Tipo] + 1
